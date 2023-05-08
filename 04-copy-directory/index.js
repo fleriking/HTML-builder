@@ -31,6 +31,8 @@ function recursiveCopy(fromDir, toDir) {
     })
 }
 
-module.exports.recursiveCopy = recursiveCopy;
-module.exports.copyDir = copyDir;
+module.exports = {
+  recursiveCopy,
+  copyDir,
+}
 

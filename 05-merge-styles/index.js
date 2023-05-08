@@ -14,13 +14,14 @@ function bundle(filePath, fromDir) {
     .then(files => {
 
       files.forEach(file => {
-        stat(path.join(COPY_CSS, file.name))
+        // console.log('checking',file);
+        stat(path.join(fromDir, file.name))
         .then(stats =>{
 
           if (path.extname(file.name) == '.css' &&
             stats.isFile()) {
   
-            readFile(path.join(COPY_CSS, file.name), { encoding: 'utf-8' })
+            readFile(path.join(fromDir, file.name), { encoding: 'utf-8' })
               .then(fileContent => {
   
                 fs.appendFile(filePath, fileContent, 'utf-8', err => { });
@@ -35,6 +36,7 @@ function bundle(filePath, fromDir) {
 
 bundle(DIST_BUNDLE, COPY_CSS);
 
-module.exports.bundle = bundle;
-
+module.exports = {
+  bundle,
+}
 
