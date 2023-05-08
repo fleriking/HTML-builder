@@ -30,3 +30,7 @@ function recursiveCopy(fromDir, toDir) {
       }
     })
 }
+
+module.exports.recursiveCopy = recursiveCopy;
+module.exports.copyDir = copyDir;
+
